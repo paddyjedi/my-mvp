@@ -31,7 +31,12 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
 	
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-	
+    mySprite.setStayInScreen(true)
+    shark_1.setVelocity(50, 50)
+    shark_2.setVelocity(50, 50)
+    shark_3.setVelocity(50, 50)
+    shark_4.setVelocity(50, 50)
+    shark_5.setVelocity(50, 50)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
 	
@@ -42,6 +47,17 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 	
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    mySprite.destroy()
+    game.over(false)
+})
+let shark_5: Sprite = null
+let shark_4: Sprite = null
+let shark_3: Sprite = null
+let shark_2: Sprite = null
+let shark_1: Sprite = null
+let mySprite: Sprite = null
+game.splash("Press A to start")
 scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -164,7 +180,7 @@ scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     `)
-let mySprite = sprites.create(img`
+mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . c c c c c c . . . 
     . . . . . . c 5 5 5 5 5 c c . . 
@@ -182,7 +198,7 @@ let mySprite = sprites.create(img`
     . . . . . f f f 5 5 5 5 5 f . . 
     . . . . . . . . f f f f f f . . 
     `, SpriteKind.Player)
-let shark_1 = sprites.create(img`
+shark_1 = sprites.create(img`
     .............ccfff..............
     ...........ccddbcf..............
     ..........ccddbbf...............
@@ -200,7 +216,7 @@ let shark_1 = sprites.create(img`
     ........ccccfcdbbcc........fff..
     .............fffff..............
     `, SpriteKind.Enemy)
-mySprite = sprites.create(img`
+shark_2 = sprites.create(img`
     .............ccfff..............
     ............cddbbf..............
     ...........cddbbf...............
@@ -218,7 +234,7 @@ mySprite = sprites.create(img`
     .......cccccfbdbbfc.............
     .............fffff..............
     `, SpriteKind.Enemy)
-mySprite = sprites.create(img`
+shark_3 = sprites.create(img`
     ...........fffffff...ccfff..........
     ..........fbbbbbbbffcbbbbf..........
     ..........fbb111bbbbbffbf...........
@@ -236,7 +252,7 @@ mySprite = sprites.create(img`
     ..............cccfffbdbbfcc.....fbbf
     ....................fffff........fff
     `, SpriteKind.Enemy)
-mySprite = sprites.create(img`
+shark_4 = sprites.create(img`
     .................ccfff..............
     ................cddbbf..............
     ...............cddbbf...............
@@ -254,7 +270,7 @@ mySprite = sprites.create(img`
     ..............ccfbdbbfc..........fff
     .................fffff..............
     `, SpriteKind.Enemy)
-mySprite = sprites.create(img`
+shark_5 = sprites.create(img`
     .............ccfff..............
     ...........ccddbcf..............
     ..........ccddbbf...............
@@ -272,3 +288,9 @@ mySprite = sprites.create(img`
     ........ccccfcdbbcc........fff..
     .............fffff..............
     `, SpriteKind.Enemy)
+mySprite.setPosition(48, 55)
+shark_1.setPosition(150, 43)
+shark_2.setPosition(150, 19)
+shark_3.setPosition(150, 67)
+shark_4.setPosition(150, 79)
+shark_5.setPosition(150, 106)
